@@ -1,5 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
+vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> hp;
+        vector<int> res;
+        for(int i=0;i<nums.size();i++){
+            if(hp.count(target-nums[i])){
+                res.push_back(hp[target-nums[i]]);
+                res.push_back(i);
+                return res;
+            }
+            hp[nums[i]]=i;
+        }
+        return res;
+    }
 bool isValid(string s) {
         stack<char> str;
 	for(int i=0;i<s.length();i++){

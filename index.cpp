@@ -1,5 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
+bool isValid(string s) {
+        stack<char> str;
+	for(int i=0;i<s.length();i++){
+		char ch=s[i];
+		if(ch=='(' or ch=='{' or ch=='[')
+			str.push(ch);
+		else{
+			if(str.empty())
+				return false;
+			if(ch==')' and str.top()=='(')
+				str.pop();
+			else if(ch=='}' and str.top()=='{')
+				str.pop();
+			else if(ch==']' and str.top()=='[')
+				str.pop();
+			else
+				return false;
+		}
+	}
+	return str.empty();
+    }
 int lengthOfLongestSubstring(string s) {
         unordered_map<char,int> hp;
         int maxLen=0;

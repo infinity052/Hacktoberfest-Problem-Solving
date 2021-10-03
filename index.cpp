@@ -13,6 +13,14 @@ vector<int> twoSum(vector<int>& nums, int target) {
         }
         return res;
     }
+bool canJump(vector<int>& nums) {
+        int reachable = 0;
+        for (int i=0; i<nums.size(); ++i) {
+            if (i > reachable) return false;
+            reachable = std::max(reachable, i + nums[i]);
+        }
+        return true;
+    }
 int maxArea(vector<int>& height) {
         int area=0,length=0,width=0,maxarea=0;
         int i=0,j=height.size()-1;

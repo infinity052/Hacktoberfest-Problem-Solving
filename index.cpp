@@ -261,6 +261,30 @@ int lengthOfLongestSubstring(string s) {
         return ans;
     }
 
+
+ ListNode* swapPairs(ListNode* head) {
+        if(head==nullptr)
+            return head;
+        ListNode* cur=head;
+         ListNode* Next;
+         ListNode* prev=nullptr;
+        int k=0;
+        while( cur!=nullptr && k<2)
+        { 
+        
+            Next=(cur->next);
+            cur->next=prev;
+           prev=cur;
+            cur=Next;
+        
+        ++k;
+        }
+        
+        if(Next)
+            head->next=swapPairs(Next);
+        return prev;   
+    }
+
 int main(){
   return 0;
 }

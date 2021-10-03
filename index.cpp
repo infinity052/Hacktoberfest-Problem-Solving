@@ -315,6 +315,51 @@ int divide(int dividend, int divisor) {
         res.second = dividend;
         
         return res;
+
+
+bool isPalindrome(int x) {
+        int a;
+        long sum=0;
+        int b;
+        b=x;
+        while(b>0)
+        {
+            a=b%10;
+            sum=sum*10+a;
+            b=b/10;
+        }
+        if(sum==x)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+        
+
+ ListNode* swapPairs(ListNode* head) {
+        if(head==nullptr)
+            return head;
+        ListNode* cur=head;
+         ListNode* Next;
+         ListNode* prev=nullptr;
+        int k=0;
+        while( cur!=nullptr && k<2)
+        { 
+        
+            Next=(cur->next);
+            cur->next=prev;
+           prev=cur;
+            cur=Next;
+        
+        ++k;
+        }
+        
+        if(Next)
+            head->next=swapPairs(Next);
+        return prev;   
+
     }
 
 int main(){

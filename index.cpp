@@ -46,6 +46,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
         
         return res;
     }
+//Jump game
 bool canJump(vector<int>& nums) {
         int reachable = 0;
         for (int i=0; i<nums.size(); ++i) {

@@ -261,6 +261,27 @@ int lengthOfLongestSubstring(string s) {
         return ans;
     }
 
+
+ public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> combs = new ArrayList<>();
+        generateCombinations(candidates, 0, target, new ArrayList(), combs);
+        return combs;       
+    }
+
+private void generateCombinations(int[] nums, int start, int target, ArrayList<Integer> currList, List<List<Integer>> combs)
+{
+        if (target == 0) {
+            combs.add(new ArrayList<>(currList));
+        }
+        if (target < 0) return;
+        
+        for (int i = start; i < nums.length; i++) {
+            currList.add(nums[i]);
+            generateCombinations(nums, i, target-nums[i], currList, combs);
+            currList.remove(currList.size()-1);
+        }
+    }
+
 int divide(int dividend, int divisor) {
         if (dividend == 0){
             return 0;

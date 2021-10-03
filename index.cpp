@@ -13,6 +13,21 @@ vector<int> twoSum(vector<int>& nums, int target) {
         }
         return res;
     }
+int maxArea(vector<int>& height) {
+        int area=0,length=0,width=0,maxarea=0;
+        int i=0,j=height.size()-1;
+        while(i!=j){
+            length=min(height[i],height[j]);
+            width=j-i;
+            area=length*width;
+            maxarea=max(maxarea,area);
+            if(height[i]<height[j])
+                i++;
+            else
+                j--;
+        }
+        return maxarea;
+    }
 bool isValid(string s) {
         stack<char> str;
 	for(int i=0;i<s.length();i++){

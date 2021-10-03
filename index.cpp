@@ -336,7 +336,7 @@ int divide(int dividend, int divisor) {
         res.second = dividend;
         
         return res;
-
+}
 
 bool isPalindrome(int x) {
         int a;

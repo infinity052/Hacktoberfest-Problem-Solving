@@ -223,6 +223,33 @@ int reverse(int x) {
         return rev;
     }
 
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        
+        ListNode* result = NULL;
+        
+        if( l1 == NULL and l2 == NULL)
+            return NULL;
+        
+        if( l1 == NULL)
+            return l2;
+        
+        if( l2 == NULL)
+            return l1;
+        
+        if( l1 != NULL and l2 != NULL)
+        {
+            if( l1->val < l2->val) {
+                result = new ListNode(l1->val);
+                result->next = mergeTwoLists(l1->next , l2);
+            }
+            else {
+                result = new ListNode(l2->val);
+                result->next = mergeTwoLists(l1, l2->next);
+            }
+        }
+        return result;        
+    }
+
 int main(){
   return 0;
 }

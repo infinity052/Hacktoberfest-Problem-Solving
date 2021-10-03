@@ -261,6 +261,7 @@ int lengthOfLongestSubstring(string s) {
         return ans;
     }
 
+
  public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> combs = new ArrayList<>();
         generateCombinations(candidates, 0, target, new ArrayList(), combs);
@@ -281,7 +282,106 @@ private void generateCombinations(int[] nums, int start, int target, ArrayList<I
         }
     }
 
+int divide(int dividend, int divisor) {
+        if (dividend == 0){
+            return 0;
+        }
+        
+        if (divisor == 1){
+            return dividend;
+        }
+        
+        if (divisor == -1){
+            if (dividend == INT_MIN){
+                return INT_MAX;
+            }else{
+                return -dividend;
+            }
+        }
+        
+        int sign = 1;
+        if (dividend > 0){
+            sign = -sign;
+            dividend = -dividend;
+        } 
+        if (divisor > 0){
+            sign = -sign;
+            divisor = -divisor;
+        }
+        
+        int res = divideCore(dividend, divisor).first;
+        if (sign < 0){
+            res = -res;
+        }
+        
+        return res;
+        
+    }
+    
+    pair<int, int> divideCore(int dividend, int divisor){
+        pair<int, int> res;
+        res.first = 0;
+        if (divisor >= -1073741824){
+            int divisor2 = divisor + divisor;
+            if (dividend <= divisor2){
+                pair<int, int> r = divideCore(dividend, divisor2);
+                res.first = 2 * r.first;
+                dividend = r.second;
+            }
+        }
+        if (dividend <= divisor){
+            res.first ++;
+            dividend -= divisor;
+        }
+        res.second = dividend;
+        
+        return res;
 
+
+bool isPalindrome(int x) {
+        int a;
+        long sum=0;
+        int b;
+        b=x;
+        while(b>0)
+        {
+            a=b%10;
+            sum=sum*10+a;
+            b=b/10;
+        }
+        if(sum==x)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+        
+
+ ListNode* swapPairs(ListNode* head) {
+        if(head==nullptr)
+            return head;
+        ListNode* cur=head;
+         ListNode* Next;
+         ListNode* prev=nullptr;
+        int k=0;
+        while( cur!=nullptr && k<2)
+        { 
+        
+            Next=(cur->next);
+            cur->next=prev;
+           prev=cur;
+            cur=Next;
+        
+        ++k;
+        }
+        
+        if(Next)
+            head->next=swapPairs(Next);
+        return prev;   
+
+    }
 
 int main(){
   return 0;

@@ -13,6 +13,37 @@ vector<int> twoSum(vector<int>& nums, int target) {
         }
         return res;
     }
+vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        sort(nums.begin(),nums.end());
+        
+        for(int i=0;i<nums.size();i++){
+            int target=-nums[i];
+            int left=i+1;
+            int right=nums.size()-1;
+            
+            while(left<right){
+                int sum=nums[left]+nums[right];
+                if(sum<target){
+                    left++;
+                }else if(sum>target){
+                    right--;
+                }else{
+                    vector<int> triplet({nums[i],nums[left],nums[right]});
+                    res.push_back(triplet);
+                    while(left<right and nums[left]==triplet[1])
+                        left++;
+                   
+                    right--;
+                }
+            }
+            // duplicates for number 1
+            while(i<nums.size()-1 and nums[i+1]==nums[i])
+                i++;
+        }
+        
+        return res;
+    }
 bool canJump(vector<int>& nums) {
         int reachable = 0;
         for (int i=0; i<nums.size(); ++i) {

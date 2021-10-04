@@ -91,6 +91,7 @@ bool isValid(string s) {
 	}
 	return str.empty();
     }
+
 int lengthOfLongestSubstring(string s) {
         unordered_map<char,int> hp;
         int maxLen=0;
@@ -112,6 +113,7 @@ int lengthOfLongestSubstring(string s) {
         }
         return maxLen;
     }
+
  bool detectCapitalUse(string word) {
         int count=0;
         int index=-1;

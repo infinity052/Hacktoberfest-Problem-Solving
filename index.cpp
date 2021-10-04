@@ -386,6 +386,6 @@ bool isPalindrome(int x) {
 
     }
 
-int main(){
+int main (){
   return 0;
 }
